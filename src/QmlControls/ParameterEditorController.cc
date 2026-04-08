@@ -216,6 +216,13 @@ void ParameterEditorController::_buildListsForComponent(int compId)
 
 void ParameterEditorController::_buildLists(void)
 {
+    _currentCategory = nullptr;
+    _currentGroup = nullptr;
+    _parameters = nullptr;
+    _mapCategoryName2Category.clear();
+    _categories.clearAndDeleteContents();
+    emit parametersChanged();
+
     // Autopilot component should always be first list
     _buildListsForComponent(MAV_COMP_ID_AUTOPILOT1);
 
@@ -507,13 +514,6 @@ void ParameterEditorController::_searchTextChanged(void)
 
 void ParameterEditorController::_hideReadOnlyChanged(void)
 {
-    _currentCategory = nullptr;
-    _currentGroup = nullptr;
-    _parameters = nullptr;
-    _mapCategoryName2Category.clear();
-    _categories.clearAndDeleteContents();
-    emit parametersChanged();
-
     _buildLists();
 
     ParameterEditorCategory* category = _categories.count() ? _categories.value<ParameterEditorCategory*>(0) : nullptr;
