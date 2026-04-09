@@ -1480,9 +1480,6 @@ QVariant FactMetaData::cookedMin() const
 void FactMetaData::setVolatileValue(bool bValue)
 {
     _volatile = bValue;
-    if (_volatile) {
-        _readOnly = true;
-    }
 }
 
 QStringList FactMetaData::splitTranslatedList(const QString &translatedList)
