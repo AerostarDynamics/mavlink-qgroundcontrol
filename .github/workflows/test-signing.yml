@@ -1,4 +1,4 @@
-name: Windows
+name: Test Signing Install
 
 on:
   workflow_dispatch:
