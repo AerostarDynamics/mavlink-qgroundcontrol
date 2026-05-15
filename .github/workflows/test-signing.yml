@@ -58,6 +58,7 @@ jobs:
         run: |
           pwd
           unzip kmscng.zip
+          
 
       - name: Install KMS CNG Crypto Provider
         # Experience has shown to avoid adding "/l" (logging) options to the msiexec command that follows.
