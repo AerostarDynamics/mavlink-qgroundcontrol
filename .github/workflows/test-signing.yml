@@ -35,18 +35,26 @@ jobs:
     ########################
 
 
-      - name: Download and verify KMS CNG
-        shell: bash
+      - name: Download KMS CNG
         run: |
           echo "runner.temp ${{ runner.temp }}"
-          pwd
-          curl -L --create-dirs --output-dir ${{ runner.temp }}/shadow_build_dir/kms -o kmscng.zip ${{ vars.KMS_CNG_PROVIDER_DOWNLOAD }}
-          echo "${{ vars.KMS_CNG_PROVIDER_DOWNLOAD_SHA }} ${{ runner.temp }}/shadow_build_dir/kms/kmscng.zip" > kmscng.sum
-          sha256sum -c kmscng.sum
+          curl -L -o ${{ runner.temp }}\shadow_build_dir\kms\kmscng.zip --create-dirs ${{ vars.KMS_CNG_PROVIDER_DOWNLOAD }}
+
+      - name: Verify KMS CNG
+        shell: pwsh
+        run: |
+          $expectedHash = "${{ vars.KMS_CNG_PROVIDER_DOWNLOAD_SHA }}"
+          $currentHash = (Get-FileHash -Path "${{ runner.temp }}\shadow_build_dir\kms" -Algorithm SHA256).Hash
+
+          if ($currentHash -eq $expectedHash) {
+              Write-Host "Success: Hashes match!"
+          } else {
+              Write-Error "Failure: Hashes do not match. Expected: $expectedHash, Got: $currentHash"
+              exit 1
+          }
 
       - name: Unzip KMS CNG
-        shell: bash
-        working-directory: ${{ runner.temp }}/shadow_build_dir/kms
+        working-directory: ${{ runner.temp }}\shadow_build_dir\kms
         run: |
           pwd
           unzip kmscng.zip
