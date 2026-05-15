@@ -60,23 +60,23 @@ jobs:
           unzip kmscng.zip
 
       - name: Install KMS CNG Crypto Provider
+        # Experience has shown to avoid adding "/l" (logging) options to the msiexec command that follows.
+        # Doing so causes the KMS CNG install to silently fail (exit code 0), which then results in a failure
+        # of the sign step (exit code 1) without obvious indication that the sign step failed as a result
+        # of failure to install the KMS CNG Crypto Provider.
         working-directory: ${{ runner.temp }}/shadow_build_dir/kms
         run: |
           cd
-          # Experience has shown to avoid adding "/l" (logging) options to the msiexec command that follows.
-          # Doing so causes the KMS CNG install to silently fail (exit code 0), which then results in a failure
-          # of the sign step (exit code 1) without obvious indication that the sign step failed as a result
-          # of failure to install the KMS CNG Crypto Provider.
           msiexec /package "${{ vars.KMS_CNG_MSI }}" /quiet
 
       - name: Authenticate to Google Cloud Platform for Code Signing
         uses: 'google-github-actions/auth@v2'
         with:
-          project_id: ${{ vars.MSI_SIGNING_PROJECT_ID }}
-          workload_identity_provider: ${{ vars.MSI_SIGNING_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: '${{ vars.MSI_SIGNING_SERVICE_ACCOUNT }}@${{ vars.MSI_SIGNING_PROJECT_ID }}.iam.gserviceaccount.com'
+          project_id: ${{ vars.WINDOWS_SIGNING_PROJECT_ID }}
+          workload_identity_provider: ${{ vars.WINDOWS_SIGNING_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: '${{ vars.WINDOWS_SIGNING_SERVICE_ACCOUNT }}@${{ vars.WINDOWS_SIGNING_PROJECT_ID }}.iam.gserviceaccount.com'
           token_format: id_token
-          id_token_audience: '${{ vars.MSI_SIGNING_PROJECT_ID }}'
+          id_token_audience: '${{ vars.WINDOWS_SIGNING_PROJECT_ID }}'
           id_token_include_email: true
           # The request_reason value will be injected into the "X-Goog-Request-Reason" HTTP header,
           # which in turn will appear in Google Cloud audit logs to aid in analysis/troublshooting
