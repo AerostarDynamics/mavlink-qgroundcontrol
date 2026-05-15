@@ -38,9 +38,9 @@ jobs:
       - name: Download and verify KMS CNG
         shell: bash
         run: |
+          echo "runner.temp ${{ runner.temp }}"
           pwd
-          ls -R
-          curl -s -L -o ${{ runner.temp }}/shadow_build_dir/kms/kmscng.zip --create-dirs ${{ vars.KMS_CNG_PROVIDER_DOWNLOAD }}
+          curl -L --create-dirs --output-dir ${{ runner.temp }}/shadow_build_dir/kms -o kmscng.zip ${{ vars.KMS_CNG_PROVIDER_DOWNLOAD }}
           echo "${{ vars.KMS_CNG_PROVIDER_DOWNLOAD_SHA }} ${{ runner.temp }}/shadow_build_dir/kms/kmscng.zip" > kmscng.sum
           sha256sum -c kmscng.sum
 
@@ -49,14 +49,12 @@ jobs:
         working-directory: ${{ runner.temp }}/shadow_build_dir/kms
         run: |
           pwd
-          ls -R
           unzip kmscng.zip
 
       - name: Install KMS CNG Crypto Provider
         working-directory: ${{ runner.temp }}/shadow_build_dir/kms
         run: |
           cd
-          dir
           # Experience has shown to avoid adding "/l" (logging) options to the msiexec command that follows.
           # Doing so causes the KMS CNG install to silently fail (exit code 0), which then results in a failure
           # of the sign step (exit code 1) without obvious indication that the sign step failed as a result
