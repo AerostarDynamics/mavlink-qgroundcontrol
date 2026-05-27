@@ -4,19 +4,10 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master
-      - 'Stable*'
-    tags:
-      - 'v*'
+      - 'Feature-*'
+      - 'Stable*AeroStar-Staging'
     paths-ignore:
       - 'docs/**' # Do not trigger for any changes under docs
-  pull_request:
-    paths:
-      - '.github/workflows/windows.yml'
-      - 'deploy/windows/**'
-      - 'src/**'
-      - 'CMakeLists.txt'
-      - 'cmake/**'
 
 # concurrency:
 #   group: ${{ github.workflow }}-${{ github.ref }}
