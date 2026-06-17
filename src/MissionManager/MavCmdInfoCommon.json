@@ -1161,6 +1161,32 @@
             }
         },
         {
+            "id":           532,
+            "rawName":      "MAV_CMD_SET_CAMERA_FOCUS",
+            "friendlyName": "Set camera focus" ,
+            "description":  "Set camera focus.",
+            "category":     "Camera",
+            "param1": {
+                "label":            "Type",
+                "enumStrings":      "One step increment,Continuous normalized focus in/out,Proportion of camera focus range,Meters,Auto focus,Single auto focus,Continuous auto focus",
+                "enumValues":       "0,1,2,3,4,5,6",
+                "default":          0
+            },
+            "param2": {
+                "label":            "Value",
+                "default":          0,
+                "decimalPlaces":    0,
+                "min":              0
+            },
+            "param3": {
+                "label":            "Camera ID",
+                "default":          0,
+                "decimalPlaces":    0,
+                "min":              0,
+                "max":              255
+            }
+        },
+        {
             "id":           2000,
             "rawName":      "MAV_CMD_IMAGE_START_CAPTURE",
             "friendlyName": "Start image capture" ,
