@@ -187,6 +187,34 @@
             "deprecatedTranslatedName": ""
         },
         {
+            "canonicalName": "SIYI ZR30 Photo",
+            "brand": "SIYI",
+            "model": "ZR30 Photo",
+            "sensorWidth": 5.40,
+            "sensorHeight": 4.0,
+            "imageWidth": 4096,
+            "imageHeight": 2160,
+            "focalLength": 14,
+            "landscape": true,
+            "fixedOrientation": true,
+            "minTriggerInterval": 1.0,
+            "deprecatedTranslatedName": "SIYI Photo"
+        },
+        {
+            "canonicalName": "SIYI ZR30 Video",
+            "brand": "SIYI",
+            "model": "ZR30 Video",
+            "sensorWidth": 5.40,
+            "sensorHeight": 4.0,
+            "imageWidth": 3840,
+            "imageHeight": 2160,
+            "focalLength": 14,
+            "landscape": true,
+            "fixedOrientation": true,
+            "minTriggerInterval": 1.0,
+            "deprecatedTranslatedName": "SIYI Video"
+        },		
+        {
             "canonicalName": "Sony a6000 16mm",
             "brand": "Sony",
             "model": "a6000 16mm",
@@ -353,6 +381,48 @@
             "fixedOrientation": false,
             "minTriggerInterval": 0,
             "deprecatedTranslatedName": "Sony ILCE-QX1"
+        },
+        {
+            "canonicalName": "Sony LR1 24mm",
+            "brand": "Sony",
+            "model": "LR1 24mm",
+            "sensorWidth": 35.7,
+            "sensorHeight": 23.8,
+            "imageWidth": 9504,
+            "imageHeight": 6336,
+            "focalLength": 24,
+            "landscape": true,
+            "fixedOrientation": true,
+            "minTriggerInterval": 1.0,
+            "deprecatedTranslatedName": "Sony LR1 24mm"
+        },
+        {
+            "canonicalName": "Sony LR1 40mm",
+            "brand": "Sony",
+            "model": "LR1 40mm",
+            "sensorWidth": 35.7,
+            "sensorHeight": 23.8,
+            "imageWidth": 9504,
+            "imageHeight": 6336,
+            "focalLength": 40,
+            "landscape": true,
+            "fixedOrientation": true,
+            "minTriggerInterval": 1.0,
+            "deprecatedTranslatedName": "Sony LR1 40mm"
+        },
+        {
+            "canonicalName": "Sony LR1 50mm",
+            "brand": "Sony",
+            "model": "LR1 50mm",
+            "sensorWidth": 35.7,
+            "sensorHeight": 23.8,
+            "imageWidth": 9504,
+            "imageHeight": 6336,
+            "focalLength": 50,
+            "landscape": true,
+            "fixedOrientation": true,
+            "minTriggerInterval": 1.0,
+            "deprecatedTranslatedName": "Sony LR1 50mm"
         },
         {
             "canonicalName": "Sony NEX-5R 20mm",
