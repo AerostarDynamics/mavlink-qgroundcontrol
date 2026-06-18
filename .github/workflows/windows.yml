@@ -3,8 +3,8 @@ name: Windows
 on:
   workflow_dispatch:
   push:
-    branches:
-      - 'Stable*AeroStar-Staging'
+    tags:
+      - 'v*'
     paths-ignore:
       - 'docs/**' # Do not trigger for any changes under docs
 
