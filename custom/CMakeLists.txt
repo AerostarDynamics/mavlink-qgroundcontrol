@@ -14,7 +14,12 @@ if(ANDROID)
     set(DEFAULT_ANDROID_DIR "${CMAKE_SOURCE_DIR}/android")
     set(FINAL_ANDROID_DIR "${CMAKE_BINARY_DIR}/custom/android")
     file(COPY "${DEFAULT_ANDROID_DIR}/." DESTINATION "${FINAL_ANDROID_DIR}")
-    file(COPY "${CUSTOM_ANDROID_DIR}/." DESTINATION "${FINAL_ANDROID_DIR}")
+    # file(COPY) skips a file whose timestamp matches the one already copied from the default
+    # template, which happens on a fresh checkout. Copy the custom files by content instead.
+    file(GLOB_RECURSE CUSTOM_ANDROID_OVERLAY RELATIVE "${CUSTOM_ANDROID_DIR}" "${CUSTOM_ANDROID_DIR}/*")
+    foreach(CUSTOM_FILE IN LISTS CUSTOM_ANDROID_OVERLAY)
+        configure_file("${CUSTOM_ANDROID_DIR}/${CUSTOM_FILE}" "${FINAL_ANDROID_DIR}/${CUSTOM_FILE}" COPYONLY)
+    endforeach()
     set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
                     "${DEFAULT_ANDROID_DIR}/"
                     "${CUSTOM_ANDROID_DIR}/"
