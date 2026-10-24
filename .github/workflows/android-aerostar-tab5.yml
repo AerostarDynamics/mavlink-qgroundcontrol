@@ -41,8 +41,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          fetch-depth: 1
-          fetch-tags: false
+          fetch-depth: 0 # full history so 'git describe' finds the version tag (v5.0.8-AD-1.0)
+          fetch-tags: true
 
       - name: Get all tags for correct version determination
         working-directory:  ${{ github.workspace }}

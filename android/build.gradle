@@ -97,8 +97,10 @@ android {
         minSdkVersion qtMinSdkVersion
         targetSdkVersion qtTargetSdkVersion
         ndk.abiFilters = qtTargetAbiList.split(",")
+        // App id from QGC_ANDROID_PACKAGE_NAME (Qt passes it as androidPackageName); same as namespace by default
+        applicationId = project.findProperty("androidPackageName") ?: namespace
 
-        // println "applicationId: ${applicationId}"
+        println "applicationId: ${applicationId}"
         println "minSdkVersion: ${minSdkVersion}"
         println "targetSdkVersion: ${targetSdkVersion}"
         println "ndk.abiFilters: ${ndk.abiFilters}"
