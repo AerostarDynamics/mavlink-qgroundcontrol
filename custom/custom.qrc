@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="custom/img">
+        <file alias="AerostarLogoWhite.png">res/img/aerostar_logo_white.png</file>
+        <file alias="AerostarLogoBlack.png">res/img/aerostar_logo_black.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Aerostar Dynamics start-up screen: white-lettering logo centred on a near-black background -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#101010"/>
+        </shape>
+    </item>
+    <item>
+        <bitmap android:src="@drawable/aerostar_splash_logo" android:gravity="center"/>
+    </item>
+</layer-list>
