@@ -69,6 +69,10 @@ jobs:
           abis: ${{ env.QT_ANDROID_ABIS }}
           cpm-modules: ${{ runner.temp }}/shadow_build_dir/cpm_modules
 
+      # Qt's all_os Android packages (Qt 6.7+) unpack without execute bits, so qt-cmake etc. are refused
+      - name: Make Qt tools executable
+        run: find "${{ runner.temp }}/Qt" -path '*/bin/*' -type f -exec chmod +x {} + ; find "${{ runner.temp }}/Qt" -path '*/libexec/*' -type f -exec chmod +x {} +
+
       - name: Configure
         working-directory: ${{ runner.temp }}/shadow_build_dir
         run: ${{ env.QT_ROOT_DIR }}/bin/qt-cmake -S ${{ github.workspace }} -B . -G Ninja
