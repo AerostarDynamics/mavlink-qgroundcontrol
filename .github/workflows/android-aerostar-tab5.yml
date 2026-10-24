@@ -47,7 +47,7 @@ jobs:
       - name: Get all tags for correct version determination
         working-directory:  ${{ github.workspace }}
         run: |
-          git fetch --all --tags -f --depth 1
+          git fetch --all --tags -f # no --depth here: it would make the clone shallow again and hide the version tag
 
       - name: Initial Setup
         uses: ./.github/actions/common
