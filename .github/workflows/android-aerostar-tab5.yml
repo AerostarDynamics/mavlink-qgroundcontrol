@@ -1,9 +1,14 @@
 name: Android-Aerostar-Tab5
 
-# Aerostar build for the UXV Navigator Tab5 (Galaxy Tab Active5). Manual only:
+# Aerostar build for the UXV Navigator Tab5 (Galaxy Tab Active5). Runs on every push to this branch, or by hand:
 #   gh workflow run android-aerostar-tab5.yml --ref aerostar-navigator-tab5
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - aerostar-navigator-tab5
+    paths-ignore:
+      - 'docs/**'
 
 # concurrency:
 #   group: ${{ github.workflow }}-${{ github.ref }}
