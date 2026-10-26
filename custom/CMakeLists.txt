@@ -4,6 +4,7 @@ message(STATUS "QGC: Adding Aerostar custom plugin")
 set_property(DIRECTORY ${CMAKE_SOURCE_DIR}
     APPEND PROPERTY COMPILE_DEFINITIONS
     QGC_CUSTOM_BUILD
+    AEROSTAR_SPLASH_HIDDEN_BY_PLUGIN # AerostarCorePlugin hides the Android start-up screen itself, after a minimum time
     CUSTOMHEADER="AerostarCorePlugin.h"
     CUSTOMCLASS=AerostarCorePlugin
 )

@@ -20,6 +20,8 @@ public:
 
     static QGCCorePlugin *instance();
 
+    void init() override;
+
     // Aerostar logo in the fly-view toolbar: white lettering for the dark (indoor) palette, black for the light one
     QString brandImageIndoor() const override { return QStringLiteral("/custom/img/AerostarLogoWhite.png"); }
     QString brandImageOutdoor() const override { return QStringLiteral("/custom/img/AerostarLogoBlack.png"); }

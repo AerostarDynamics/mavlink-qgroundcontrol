@@ -110,7 +110,9 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved)
 
     JoystickAndroid::setNativeMethods();
 
+#ifndef AEROSTAR_SPLASH_HIDDEN_BY_PLUGIN
     QNativeInterface::QAndroidApplication::hideSplashScreen(333);
+#endif
 
     return JNI_VERSION_1_6;
 }
