@@ -18,6 +18,9 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
     <!-- Needed to keep working while 'asleep' -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Aerostar: auto-start at boot (AerostarBootReceiver). SYSTEM_ALERT_WINDOW = "Appear on top", granted by hand once per tablet -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <!-- Needed for read/write to SD Card Path in AppSettings -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -109,6 +112,16 @@
                 android:resource="@xml/qtprovider_paths" />
         </provider>
 
+
+        <!-- Aerostar: start Aerostar GCS when the tablet boots -->
+        <receiver
+            android:name="com.aerostardynamics.qgroundcontrol.AerostarBootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
